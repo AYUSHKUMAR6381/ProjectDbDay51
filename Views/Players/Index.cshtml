@@ -1,0 +1,52 @@
+﻿@model IEnumerable<WebAppDay51.Models.Player>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.PName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PTeam)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PProfilePic)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PCategory)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.PName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PTeam)
+            </td>
+            <td>
+                <img src="~/Images/@item.PName" width="150" height="150" />
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PCategory)
+            </td>
+            <td>
+                <a asp-action="Details" asp-route-id="@item.PId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.PId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
